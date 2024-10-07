@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Repositories;
+namespace Tests\Unit\Repositories\Users;
 
 use Database\Seeders\UserSeeder;
 use Domain\Users\Repositories\UserRepository;

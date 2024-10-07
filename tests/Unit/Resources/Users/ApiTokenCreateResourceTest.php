@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Resources;
+namespace Tests\Unit\Resources\Users;
 
 use App\Http\Resources\Users\ApiTokenCreateResource;
 use Carbon\Carbon;
