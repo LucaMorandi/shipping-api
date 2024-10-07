@@ -17,7 +17,7 @@ class UserControllerCreateApiTokenTest extends TestCase {
     parent::setUp();
 
     $this->seed();
-    $this->endpoint = 'api/sanctum/token';
+    $this->endpoint = 'api/v1/sanctum/token';
 
     $this->credentials = [
       'email' => UserSeeder::$email,

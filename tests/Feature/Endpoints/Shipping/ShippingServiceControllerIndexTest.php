@@ -23,7 +23,7 @@ class ShippingServiceControllerIndexTest extends TestCase {
 
     $this->seed(UserSeeder::class);
     $this->table = 'shipping_services_view';
-    $this->endpoint = 'api/shipping/services';
+    $this->endpoint = 'api/v1/shipping/services';
 
     Sanctum::actingAs(UserFactory::new()->create(), ['view:shipping-services']);
   }
