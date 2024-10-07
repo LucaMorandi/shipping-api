@@ -5,4 +5,7 @@ use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/sanctum/token', [UserController::class, 'createApiToken']);
-Route::get('/shipping/services', [ShippingServiceController::class, 'index'])->middleware('auth:sanctum');
+
+Route::group(['middleware' => ['auth:sanctum', 'abilities:view:shipping-services']], function () {
+  Route::get('/shipping/services', [ShippingServiceController::class, 'index']);
+});

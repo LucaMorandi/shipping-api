@@ -25,15 +25,20 @@ class ShippingServiceControllerIndexTest extends TestCase {
     $this->table = 'shipping_services_view';
     $this->endpoint = 'api/shipping/services';
 
-    Sanctum::actingAs(
-      UserFactory::new()->create(),
-      ['*'],
-    );
+    Sanctum::actingAs(UserFactory::new()->create(), ['view:shipping-services']);
   }
 
   public function testEndpointHasCorrectMiddleware(): void {
     $route = $this->get_route('GET', $this->endpoint);
     $this->assertTrue($this->hasMiddleware($route, 'auth:sanctum'));
+    $this->assertTrue($this->hasMiddleware($route, 'abilities:view:shipping-services'));
+  }
+
+  public function testApiTokenPermissionSanityCheck(): void {
+    Sanctum::actingAs(UserFactory::new()->create());
+
+    $response = $this->getJson($this->endpoint);
+    $response->assertForbidden();
   }
 
   public function testEndpointCallsShippingServiceViewRepository(): void {
