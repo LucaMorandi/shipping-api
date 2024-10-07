@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder {
     $this->call(ParcelTypeSeeder::class);
     $this->call(RegionSeeder::class);
     $this->call(UserSeeder::class);
+
+    // This seeder should run last as it relies on data from the other seeders
+    $this->call(ShippingServiceSeeder::class);
   }
 
 }

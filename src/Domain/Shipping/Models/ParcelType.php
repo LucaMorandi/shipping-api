@@ -3,6 +3,7 @@
 namespace Domain\Shipping\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ParcelType extends Model {
 
@@ -14,5 +15,9 @@ class ParcelType extends Model {
   protected $fillable = [
     'name',
   ];
+
+  public function shippingServices(): HasMany {
+    return $this->hasMany(ShippingService::class);
+  }
 
 }
