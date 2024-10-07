@@ -30,6 +30,7 @@ class ShippingServiceControllerIndexTest extends TestCase {
 
   public function testEndpointHasCorrectMiddleware(): void {
     $route = $this->get_route('GET', $this->endpoint);
+    $this->assertTrue($this->hasMiddleware($route, 'throttle:100,1'));
     $this->assertTrue($this->hasMiddleware($route, 'auth:sanctum'));
     $this->assertTrue($this->hasMiddleware($route, 'abilities:view:shipping-services'));
   }

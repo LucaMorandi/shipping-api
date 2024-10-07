@@ -26,6 +26,11 @@ class UserControllerCreateApiTokenTest extends TestCase {
     ];
   }
 
+  public function testEndpointHasCorrectMiddleware(): void {
+    $route = $this->get_route('POST', $this->endpoint);
+    $this->assertTrue($this->hasMiddleware($route, 'throttle:30,1'));
+  }
+
   public function testEndpointCallsUserRepository(): void {
     $user = User::firstWhere('email', UserSeeder::$email);
 
